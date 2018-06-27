@@ -1,0 +1,54 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/app
+    parallelism: 1
+    docker:
+      - image: circleci/ruby:2.3.6
+      - image: circleci/mysql:5.7-ram
+
+    steps:
+      - checkout
+
+      # Restore bundle cache
+      - restore_cache:
+          keys:
+            - bundle-{{ checksum "blinkist-oceans.gemspec" }}
+            - bundle-
+      - run:
+          name: Bundle Install
+          command: bundle check --path vendor/bundle || bundle install --path vendor/bundle
+
+      # Store bundle cache
+      - save_cache:
+          key: bundle-{{ checksum "blinkist-ocean.gemspec" }}
+          paths:
+            - vendor/bundle
+
+      - type: shell
+        name: Rubocop
+        command: bundle exec rubocop
+
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+
+      - type: shell
+        name: Rspec
+        command: |
+              bundle exec rspec --profile 10 \
+                                --format RspecJunitFormatter \
+                                --out test_results/rspec.xml \
+                                --format progress \
+                                $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
+
+      # Save test results for timing analysis
+      - store_test_results:
+          path: test_results
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          context: Github

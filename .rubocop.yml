@@ -1,0 +1,81 @@
+AllCops:
+  TargetRubyVersion: 2.3
+
+Lint/ParenthesesAsGroupedExpression:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+
+Lint/RescueException:
+  Enabled: true
+  Exclude:
+    - 'lib/blinkist/microservice/listener.rb'
+    - 'exe/microservice'
+
+Lint/UnusedMethodArgument:
+  Enabled: false
+
+Style/BlockDelimiters:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+
+Style/EachWithObject:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/PredicateName:
+  Enabled: false
+
+Style/SignalException:
+  Enabled: false
+
+Style/SpaceAroundEqualsInParameterDefault:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Offense count: 9
+Metrics/AbcSize:
+  Enabled: false
+
+# Offense count: 1
+# Configuration parameters: CountComments.
+Metrics/ClassLength:
+  Enabled: false
+
+# Offense count: 2
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+# Offense count: 79
+# Configuration parameters: AllowURI, URISchemes.
+Metrics/LineLength:
+  Enabled: false
+
+# Offense count: 10
+# Configuration parameters: CountComments.
+Metrics/MethodLength:
+  Enabled: false
+
+# Offense count: 2
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Naming/FileName:
+  Enabled: false
