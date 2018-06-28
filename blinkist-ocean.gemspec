@@ -9,9 +9,11 @@ Gem::Specification.new do |spec|
   spec.version     = Oceans::VERSION
   spec.authors     = ["Ole Richter"]
   spec.email       = ["ole@blinkist.com"]
-  spec.homepage    = "https://www.blinkist.com"
-  spec.summary     = "Oceans"
-  spec.description = "Oceans"
+
+  spec.summary     = 'Beam me to the ocean, Scotty!" | Add some privacy to your users location data.'
+  spec.description = "Oceanize gives you random coordinates somewhere on the ocean in the same UTC timezone."
+  spec.homepage    = "https://github.com/oceans"
+  spec.license     = "MIT"
 
   spec.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.md"]
   spec.require_paths = ["lib"]
@@ -20,6 +22,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "rake", "~> 12.3"
-  spec.add_development_dependency "rspec", "~> 3.7.0"
+  spec.add_development_dependency "rspec", "~> 3.7"
   spec.add_development_dependency "rubocop", "~> 0.49.0"
 end
