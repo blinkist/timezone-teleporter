@@ -1,6 +1,8 @@
 # Oceans
 
-Take care of the privacy of your users location data! Oceans transforms your coordinates into a random point on the ocean while keeping the utc timezone.
+Give your users location data some more privacy!
+
+Oceans transforms your coordinates into random points on the ocean while keeping the utc timezone.
 
 Oceans is build on top of [timezone](https://github.com/panthomakos/).
 
