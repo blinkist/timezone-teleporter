@@ -1,22 +1,25 @@
 # Oceans
 
-## Configure
+Take care of the privacy of your users location data! Oceans transforms your coordinates into a random point on the ocean while keeping the utc timezone.
 
+Oceans is build on top of [timezone](https://github.com/panthomakos/).
+
+## Configure
 
 ### Configure with Geonames
 
 ```ruby
 Oceans.configure(:geonames) do |c|
-  c.username = 'your_geonames_username_goes_here'
+  c.username = 'geonames_username'
 end
 ```
 
 ### Configure with Google
 
 ```ruby
-Timezone::Lookup.config(:google) do |c|
-  c.api_key = 'your_google_api_key_goes_here'
-  c.client_id = 'your_google_client_id' # if using 'Google for Work'
+Oceans.config(:google) do |c|
+  c.api_key = 'google_api_key'
+  c.client_id = 'google_client_id' # if using 'Google for Work'
 end
 ```
 

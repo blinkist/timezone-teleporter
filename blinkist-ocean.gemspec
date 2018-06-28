@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "timezone", "~> 1.2.0"
 
   spec.add_development_dependency "byebug"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.4.0"
-  spec.add_development_dependency "rubocop", "~> 0.37.2"
+  spec.add_development_dependency "rake", "~> 12.3"
+  spec.add_development_dependency "rspec", "~> 3.7.0"
+  spec.add_development_dependency "rubocop", "~> 0.39"
 end
