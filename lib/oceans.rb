@@ -1,6 +1,6 @@
 require "timezone"
 
-require_relative "oceans/ocean_points"
+require_relative "oceans/ocean_coordinates"
 
 module Oceans
   class << self
@@ -16,17 +16,21 @@ module Oceans
 
       utc_offset = timezone.utc_offset
 
-      POINTS[utc_offset] || nearest_timezone(utc_offset)
+      locations[utc_offset] || nearest_timezone(utc_offset)
     rescue Timezone::Error::InvalidZone
-      raiseTimezone::Error::InvalidZone unless ignore_invalid_timezones
+      raise Timezone::Error::InvalidZone unless ignore_invalid_timezones
 
       [lat, long]
     end
 
     private
 
-    def nearest_timezone
-      POINTS[POINTS.keys.reverse.find { |i| i < utc_offset }]
+    def locations
+      OCEAN_LOCATIONS
+    end
+
+    def nearest_timezone(utc_offset)
+      locations[locations.keys.reverse.find { |i| i < utc_offset }]
     end
   end
 end
