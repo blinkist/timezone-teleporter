@@ -2,9 +2,9 @@
 
 Add some privacy to your users location data!
 
-Oceans transforms your coordinates into locations on the ocean while staying in the same UTC timezone and keeping the same UTC time offset ([list of UTC time offsets](https://en.wikipedia.org/wiki/List_of_UTC_time_offsets).
+Oceans transforms your coordinates into locations on the ocean while staying in the same UTC timezone and keeping the same UTC time offset ([list of UTC time offsets](https://en.wikipedia.org/wiki/List_of_UTC_time_offsets)).
 
-* Uses the gem [timezone](https://github.com/panthomakos/timezone)) for timezone lookup.
+* Uses the gem [timezone](https://github.com/panthomakos/timezone) for timezone lookup.
 
 ## Usage
 
