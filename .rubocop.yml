@@ -20,6 +20,10 @@ Style/BlockDelimiters:
   Exclude:
     - 'spec/**/*'
 
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*.rb"
+
 Style/EachWithObject:
   Enabled: false
 
