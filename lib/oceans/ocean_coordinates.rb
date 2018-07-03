@@ -1,5 +1,8 @@
 module Oceans
   OCEAN_LOCATIONS = {
+    -39_600 => [-13.829816, -171.742604], # Pacific/Apia | -11
+    -36_000 => [-9.384183, -171.169740], # Pacific/Fakaofo | -10
+    -32_400 => [49.500407, -123.320751], # Pacific/Gambier | -9
     -28_800 => [59.710525, -161.940489], # America/Anchorage | -8
     -25_200 => [46.872994, -124.185620], # America/Los_Angeles | -7
     -21_600 => [13.336956, -89.005020], # America/El_Salvador | -6

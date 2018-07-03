@@ -3,9 +3,6 @@
 require 'bundler/setup'
 require 'oceans'
 
-require "dotenv"
-Dotenv.load(".env.#{ENV['RACK_ENV']}", ".env")
-
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'

@@ -2,43 +2,37 @@
 
 Add some privacy to your users location data!
 
-Oceans transforms your coordinates into locations on the ocean while staying in the same UTC timezone and keeping the same UTC time offset ([list of UTC time offsets](https://en.wikipedia.org/wiki/List_of_UTC_time_offsets)).
+Oceans transforms your coordinates into locations on the ocean while staying in the same UTC time zone and keeping the same UTC time offset ([list of UTC time offsets](https://en.wikipedia.org/wiki/List_of_UTC_time_offsets)).
 
-* Uses the gem [timezone](https://github.com/panthomakos/timezone) for timezone lookup.
+* Uses the gem [timezone_finder](https://github.com/gunyarakun/timezone_finder) for time zone lookup.
+* Uses the gem [timezone](https://github.com/panthomakos/timezone).
 
 ## Usage
 
 ### Configure
 
-You can use Oceans eaither with Geonames or with Google:
-
-#### Configure with Geonames
-
 ```ruby
-Oceans.configure(:geonames) do |c|
-  c.username = 'geonames_username'
+Oceans.configure do |c|
+  c.silent_mode = true
+  c.use_proximity_algorithm = true
+  c.delta_degree = 1
 end
 ```
 
-#### Configure with Google
-
-```ruby
-Oceans.config(:google) do |c|
-  c.api_key = 'google_api_key'
-  c.client_id = 'google_client_id' # if using 'Google for Work'
-end
-```
+* **silent_mode**: if set to true, no errors are raised (default is true).
+* **use_proximity_algorithm**: if the timezone is not found, Oceans tries to find the closest timezone within +-1 delta_degree lng and +-1 delta_degree lat (default is true).
+* **delta_degree**: defines the radius for the proximity algorithm (default is 1).
 
 ### Oceanize
 
-Gives you random coordinates somewhere on the ocean in the same UTC timezone.
+Gives you random coordinates somewhere on the ocean in the same UTC time zone.
 
 ```ruby
-Oceans.oceanize(-34.92771472817, 138.477082746287)
-# => [-34.92771808058, 138.477041423321]
+Oceans.oceanize(52.520007, 13.404954)
+# => [13.497359, 2.114399]
 ```
 
-NOTE: If the timezone service can't find the timezone `Oceans.oceanize` will return the origin coordinates.
+NOTE: If time zone is not found, `Oceans.oceanize` will return the origin coordinates unless silent_mode is set to false.
 
 ## Development
 
