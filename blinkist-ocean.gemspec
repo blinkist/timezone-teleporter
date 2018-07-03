@@ -2,7 +2,6 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "lib"))
 
 # Maintain your gem's version:
 require "oceans/version"
-require "byebug"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
