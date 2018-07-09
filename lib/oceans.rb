@@ -1,4 +1,5 @@
-require "timezone"
+# frozen_string_literal: true
+
 require "timezone_finder"
 
 require_relative "oceans/timezone_coordinates"

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Oceans
   OCEAN_LOCATIONS = {
     -39_600 => [-13.829816, -171.742604], # Pacific/Apia | -11
