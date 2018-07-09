@@ -7,18 +7,14 @@ RSpec.describe Oceans do
     expect(Oceans::VERSION).not_to be nil
   end
 
-  context ".oceanize" do
-    subject { described_class.oceanize(lat, lng) }
-
+  context ".timezone_coordinates" do
     before do
       Oceans.configure { |c| c.silent_mode = false }
     end
 
-    example_data = JSON.parse(File.read("spec/fixtures/example_coordinates.json"))
-
-    example_data.each do |utc_offset, coordinates|
-      it "returns correct coordinates #{coordinates}" do
-        expect(Oceans.oceanize(*coordinates)).to eq Oceans::OCEAN_LOCATIONS[utc_offset.to_i]
+    it "coordinates matches timezones" do
+      Oceans.timezone_coordinates.each do |timezone, coordinates|
+        expect(Oceans.timezone_at(*coordinates)).to eq(timezone)
       end
     end
   end
