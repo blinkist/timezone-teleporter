@@ -19,7 +19,6 @@ module Oceans
 
     def oceanize(lat, lng)
       timezone_coordinates[timezone_at(lat, lng)]
-
     rescue StandardError => e
       raise e unless configuration.silent_mode
 
