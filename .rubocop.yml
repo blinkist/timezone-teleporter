@@ -23,6 +23,10 @@ Style/BlockDelimiters:
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*.rb"
+    - "lib/tasks/**/*.rb"
+
+Metrics/ModuleLength:
+  Max: 2000
 
 Style/EachWithObject:
   Enabled: false

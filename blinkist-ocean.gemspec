@@ -18,7 +18,6 @@ Gem::Specification.new do |spec|
   spec.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.md"]
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "json"
   spec.add_dependency "timezone_finder", "~> 1"
 
   spec.add_development_dependency "bundler", "~> 1.16"
