@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-
+require "byebug"
 require "oceans"
-
 require "pry"
+
 Pry.start

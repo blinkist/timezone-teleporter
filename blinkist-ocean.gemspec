@@ -1,9 +1,9 @@
+# frozen_string_literal: true
+
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "lib"))
 
-# Maintain your gem's version:
 require "oceans/version"
 
-# Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
   spec.name        = "oceans"
   spec.version     = Oceans::VERSION
@@ -18,10 +18,12 @@ Gem::Specification.new do |spec|
   spec.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.md"]
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "timezone", "~> 1"
+  spec.add_dependency "json"
   spec.add_dependency "timezone_finder", "~> 1"
 
+  spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
   spec.add_development_dependency "rubocop"
+  spec.add_development_dependency "byebug"
 end
