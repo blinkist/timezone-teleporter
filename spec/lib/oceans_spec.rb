@@ -7,13 +7,13 @@ RSpec.describe Oceans do
     expect(Oceans::VERSION).not_to be nil
   end
 
-  context ".timezone_coordinates" do
+  context "TIMEZONE_COORDINATES" do
     before do
       Oceans.configure { |c| c.silent_mode = false }
     end
 
     it "coordinates matches timezones" do
-      Oceans.timezone_coordinates.each do |timezone, coordinates|
+      Oceans::TIMEZONE_COORDNINATES.each do |timezone, coordinates|
         expect(Oceans.timezone_at(*coordinates)).to eq(timezone)
       end
     end
