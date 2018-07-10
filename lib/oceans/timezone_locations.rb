@@ -1,9 +1,7 @@
 # frozen_string_literal => true
 
-require "json"
-
 module Oceans
-  TIMEZONE_COORDNINATES = {
+  TIMEZONE_LOCATIONS = {
     "Indian/Mauritius" => [
       -20.348404,
       57.55215200000001

@@ -25,7 +25,6 @@ Metrics/BlockLength:
     - "spec/**/*.rb"
     - "lib/tasks/**/*.rb"
 
-
 Metrics/ModuleLength:
   Max: 2000
 

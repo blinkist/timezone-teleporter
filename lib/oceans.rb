@@ -2,7 +2,7 @@
 
 require "timezone_finder"
 
-require_relative "oceans/timezone_coordinates"
+require_relative "oceans/timezone_locations"
 require_relative "oceans/configuration"
 require_relative "oceans/errors"
 
@@ -18,7 +18,7 @@ module Oceans
     end
 
     def oceanize(lat, lng)
-      TIMEZONE_COORDNINATES[timezone_at(lat, lng)]
+      TIMEZONE_LOCATIONS[timezone_at(lat, lng)]
     rescue StandardError => e
       raise e unless configuration.silent_mode
 

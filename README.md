@@ -25,7 +25,7 @@ end
 
 ### Oceanize
 
-Gives you random coordinates somewhere on the ocean in the same UTC time zone.
+Gives you a location somewhere in the same timezone.
 
 ```ruby
 Oceans.oceanize(52.520007, 13.404954)
