@@ -21,7 +21,7 @@ RSpec.describe Oceans do
         end
       end
 
-      context "with proper coordinates" do
+      context "called with proper coordinates" do
         it "returns correct coordinates in timezone" do
           expect(subject).to eq Oceans::TIMEZONE_LOCATIONS[Oceans.timezone_at(*coordinates)]
         end
