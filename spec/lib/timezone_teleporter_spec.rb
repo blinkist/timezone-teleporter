@@ -24,7 +24,7 @@ RSpec.describe TimezoneTeleporter do
       end
 
       it "new locations are different from input locations" do
-        test_locations.each do |timezone, coordinates|
+        test_locations.each do |_timezone, coordinates|
           expect(TimezoneTeleporter.teleport(*coordinates)).not_to eq coordinates
         end
       end
