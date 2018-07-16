@@ -14,6 +14,16 @@ RSpec.describe Oceans do
   context ".oceanize" do
     subject { Oceans.oceanize(*coordinates) }
 
+    context "with test data" do
+      let(:test_locations) { JSON.parse(File.read(TEST_LOCATION_PATH)) }
+
+      it "new locations match locations from TIMEZONE_LOCATIONS" do
+        Oceans::TIMEZONE_LOCATIONS.each do |timezone, coordinates|
+          expect(Oceans.oceanize(*coordinates)).to eq Oceans::TIMEZONE_LOCATIONS[timezone]
+        end
+      end
+    end
+
     context "when in silent mode" do
       before do
         Oceans.configure do |c|
@@ -43,12 +53,6 @@ RSpec.describe Oceans do
       before do
         Oceans.configure do |c|
           c.silent_mode = false
-        end
-      end
-
-      context "with proper coordinates" do
-        it "returns correct coordinates in timezone" do
-          expect(subject).to eq Oceans::TIMEZONE_LOCATIONS[Oceans.timezone_at(*coordinates)]
         end
       end
 

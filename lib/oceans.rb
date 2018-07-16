@@ -37,6 +37,8 @@ module Oceans
       timezone_name
     end
 
+    private
+
     def timezone_finder
       @timezone_finder ||= TimezoneFinder.create
     end
