@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "bundler/setup"
-require "oceans"
+require "timezone_teleporter"
 require "byebug"
 require "json"
 

@@ -29,8 +29,8 @@ jobs:
       - run:
           name: Publish to Rubygems
           command: |
-            gem build oceans.gemspec
-            gem push "oceans-$(git describe --tags | cut -c2-).gem"
+            gem build timezone_teleporter.gemspec
+            gem push "timezone_teleporter-$(git describe --tags | cut -c2-).gem"
 
 workflows:
   version: 2
