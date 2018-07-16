@@ -1,6 +1,6 @@
 # frozen_string_literal => true
 
-module Oceans
+module TimezoneTeleporter
   TIMEZONE_LOCATIONS = {
     "Indian/Mauritius" => [
       -20.348404,

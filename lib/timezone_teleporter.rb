@@ -2,11 +2,11 @@
 
 require "timezone_finder"
 
-require_relative "oceans/timezone_locations"
-require_relative "oceans/configuration"
-require_relative "oceans/errors"
+require_relative "timezone_teleporter/timezone_locations"
+require_relative "timezone_teleporter/configuration"
+require_relative "timezone_teleporter/errors"
 
-module Oceans
+module TimezoneTeleporter
   class << self
     def configure
       self.configuration ||= Configuration.new
@@ -17,7 +17,7 @@ module Oceans
       @configuration ||= Configuration.new
     end
 
-    def oceanize(lat, lng)
+    def teleport(lat, lng)
       TIMEZONE_LOCATIONS[timezone_at(lat, lng)]
     rescue StandardError => e
       raise e unless configuration.silent_mode

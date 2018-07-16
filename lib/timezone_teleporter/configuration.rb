@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Oceans
+module TimezoneTeleporter
   class Configuration
     attr_accessor :silent_mode
     attr_accessor :use_proximity_algorithm
