@@ -18,8 +18,14 @@ RSpec.describe TimezoneTeleporter do
       let(:test_locations) { JSON.parse(File.read(TEST_LOCATION_PATH)) }
 
       it "new locations match locations from TIMEZONE_LOCATIONS" do
-        TimezoneTeleporter::TIMEZONE_LOCATIONS.each do |timezone, coordinates|
+        test_locations.each do |timezone, coordinates|
           expect(TimezoneTeleporter.teleport(*coordinates)).to eq TimezoneTeleporter::TIMEZONE_LOCATIONS[timezone]
+        end
+      end
+
+      it "new locations are different from input locations" do
+        test_locations.each do |timezone, coordinates|
+          expect(TimezoneTeleporter.teleport(*coordinates)).not_to eq coordinates
         end
       end
     end
