@@ -29,7 +29,7 @@ TimezoneTeleporter can be configured in an initializer:
 
 ```ruby
 TimezoneTeleporter.configure do |c|
-  c.silent_mode             = true
+  c.silent_mode             = false
   c.use_proximity_algorithm = true
   c.delta_degree            = 1
 end
@@ -37,7 +37,7 @@ end
 
 Use following configuration flags to customise the library's behaviour:
 
-* `silent_mode`: if set to true, no errors are raised (default is true),
+* `silent_mode`: if set to true, no errors are raised (default is false),
 * `use_proximity_algorithm`: if the timezone is not found, TimezoneTeleporter tries to find the closest timezone within +-1 delta_degree longitude and +-1 delta_degree latitude (default is true),
 * `delta_degree`: defines the radius for the proximity algorithm (default is 1).
 
