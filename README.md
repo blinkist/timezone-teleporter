@@ -1,3 +1,5 @@
+![TimezoneTeleporter](./timezone_teleporter.png)
+
 # TimezoneTeleporter
 
 TimezoneTeleporter anonymizes users' GPS coordinates by generating random coordinates in the same time zone. These new coordinates may be used then safely by 3rd party systems to process the users' location, without disclosing their actual physical position, providing more privacy, and anonymity to users.
