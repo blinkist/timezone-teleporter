@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "timezone_finder"
-require "logger"
 
 require_relative "timezone_teleporter/timezone_locations"
 require_relative "timezone_teleporter/configuration"
@@ -21,7 +20,7 @@ module TimezoneTeleporter
     def teleport(lat, lng)
       TIMEZONE_LOCATIONS[timezone_at(lat, lng)]
     rescue StandardError => e
-      configuration.logger.error "Location couldn't be anonymized with TimezoneTeleporter: #{e.message}"
+      raise e unless configuration.silent_mode
 
       [lat, lng]
     end

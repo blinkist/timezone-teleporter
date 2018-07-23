@@ -14,35 +14,6 @@ RSpec.describe TimezoneTeleporter do
   context ".teleport" do
     subject { TimezoneTeleporter.teleport(*coordinates) }
 
-    context "called with some proper coordinates" do
-      it "returns correct coordinates in timezone" do
-        expect(subject).to eq TimezoneTeleporter::TIMEZONE_LOCATIONS[TimezoneTeleporter.timezone_at(*coordinates)]
-      end
-    end
-
-    context "when timezone is not found" do
-      let(:logger) { ::Logger.new(STDOUT) }
-
-      before do
-        TimezoneTeleporter.configure do |c|
-          c.logger = logger
-        end
-
-        allow(TimezoneTeleporter).to receive(:timezone_at)
-          .and_raise StandardError
-      end
-
-      it "returns origin coordinates in timezone" do
-        expect(subject).to eq coordinates
-      end
-
-      it "calls the logger" do
-        expect(logger).to receive(:error)
-
-        subject
-      end
-    end
-
     context "with test data" do
       let(:test_locations) { JSON.parse(File.read(TEST_LOCATION_PATH)) }
 
@@ -55,6 +26,52 @@ RSpec.describe TimezoneTeleporter do
       it "new locations are different from input locations" do
         test_locations.each do |_timezone, coordinates|
           expect(TimezoneTeleporter.teleport(*coordinates)).not_to eq coordinates
+        end
+      end
+    end
+
+    context "when in silent mode" do
+      before do
+        TimezoneTeleporter.configure do |c|
+          c.silent_mode = true
+        end
+      end
+
+      context "called with proper coordinates" do
+        it "returns correct coordinates in timezone" do
+          expect(subject).to eq TimezoneTeleporter::TIMEZONE_LOCATIONS[TimezoneTeleporter.timezone_at(*coordinates)]
+        end
+      end
+
+      context "when timezone is not found" do
+        before do
+          allow(TimezoneTeleporter).to receive(:timezone_at)
+            .and_raise StandardError
+        end
+
+        it "returns origin coordinates in timezone" do
+          expect(subject).to eq coordinates
+        end
+      end
+    end
+
+    context "when in non-silent mode" do
+      before do
+        TimezoneTeleporter.configure do |c|
+          c.silent_mode = false
+        end
+      end
+
+      context "when timezone is not found" do
+        before do
+          allow(TimezoneTeleporter).to receive(:timezone_at)
+            .and_raise error
+        end
+
+        let(:error) { TimezoneTeleporter::TimeZoneNotFoundError }
+
+        it "returns origin coordinates in timezone" do
+          expect { subject }.to raise_error error
         end
       end
     end
