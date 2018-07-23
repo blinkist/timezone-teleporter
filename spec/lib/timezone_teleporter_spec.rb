@@ -30,13 +30,6 @@ RSpec.describe TimezoneTeleporter do
       end
     end
 
-    context "when in silent mode" do
-      before do
-        TimezoneTeleporter.configure do |c|
-          c.silent_mode = true
-        end
-      end
-
       context "called with proper coordinates" do
         it "returns correct coordinates in timezone" do
           expect(subject).to eq TimezoneTeleporter::TIMEZONE_LOCATIONS[TimezoneTeleporter.timezone_at(*coordinates)]
@@ -44,37 +37,28 @@ RSpec.describe TimezoneTeleporter do
       end
 
       context "when timezone is not found" do
+        let(:logger) { ::Logger.new(STDOUT) }
+
         before do
+          TimezoneTeleporter.configure do |c|
+            c.logger = logger
+          end
+
           allow(TimezoneTeleporter).to receive(:timezone_at)
             .and_raise StandardError
+        end
+
+        it "calls the logger" do
+          expect(logger).to receive(:error)
+
+          subject
         end
 
         it "returns origin coordinates in timezone" do
           expect(subject).to eq coordinates
         end
       end
-    end
 
-    context "when in non-silent mode" do
-      before do
-        TimezoneTeleporter.configure do |c|
-          c.silent_mode = false
-        end
-      end
-
-      context "when timezone is not found" do
-        before do
-          allow(TimezoneTeleporter).to receive(:timezone_at)
-            .and_raise error
-        end
-
-        let(:error) { TimezoneTeleporter::TimeZoneNotFoundError }
-
-        it "returns origin coordinates in timezone" do
-          expect { subject }.to raise_error error
-        end
-      end
-    end
   end
 
   context ".timezone_at" do
