@@ -14,23 +14,7 @@ RSpec.describe TimezoneTeleporter do
   context ".teleport" do
     subject { TimezoneTeleporter.teleport(*coordinates) }
 
-    context "with test data" do
-      let(:test_locations) { JSON.parse(File.read(TEST_LOCATION_PATH)) }
-
-      it "new locations match locations from TIMEZONE_LOCATIONS" do
-        test_locations.each do |timezone, coordinates|
-          expect(TimezoneTeleporter.teleport(*coordinates)).to eq TimezoneTeleporter::TIMEZONE_LOCATIONS[timezone]
-        end
-      end
-
-      it "new locations are different from input locations" do
-        test_locations.each do |_timezone, coordinates|
-          expect(TimezoneTeleporter.teleport(*coordinates)).not_to eq coordinates
-        end
-      end
-    end
-
-    context "called with proper coordinates" do
+    context "called with some proper coordinates" do
       it "returns correct coordinates in timezone" do
         expect(subject).to eq TimezoneTeleporter::TIMEZONE_LOCATIONS[TimezoneTeleporter.timezone_at(*coordinates)]
       end
@@ -48,14 +32,30 @@ RSpec.describe TimezoneTeleporter do
           .and_raise StandardError
       end
 
+      it "returns origin coordinates in timezone" do
+        expect(subject).to eq coordinates
+      end
+
       it "calls the logger" do
         expect(logger).to receive(:error)
 
         subject
       end
+    end
 
-      it "returns origin coordinates in timezone" do
-        expect(subject).to eq coordinates
+    context "with test data" do
+      let(:test_locations) { JSON.parse(File.read(TEST_LOCATION_PATH)) }
+
+      it "new locations match locations from TIMEZONE_LOCATIONS" do
+        test_locations.each do |timezone, coordinates|
+          expect(TimezoneTeleporter.teleport(*coordinates)).to eq TimezoneTeleporter::TIMEZONE_LOCATIONS[timezone]
+        end
+      end
+
+      it "new locations are different from input locations" do
+        test_locations.each do |_timezone, coordinates|
+          expect(TimezoneTeleporter.teleport(*coordinates)).not_to eq coordinates
+        end
       end
     end
   end

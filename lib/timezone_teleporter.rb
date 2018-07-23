@@ -17,7 +17,6 @@ module TimezoneTeleporter
     def configuration
       @configuration ||= Configuration.new
     end
-
     def teleport(lat, lng)
       TIMEZONE_LOCATIONS[timezone_at(lat, lng)]
     rescue StandardError => e
@@ -25,7 +24,6 @@ module TimezoneTeleporter
 
       [lat, lng]
     end
-
     def timezone_at(lat, lng)
       timezone_name = timezone_finder.timezone_at(lat: lat, lng: lng)
 
