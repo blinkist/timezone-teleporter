@@ -7,7 +7,6 @@ TimezoneTeleporter anonymizes users' GPS coordinates by generating random coordi
 ## Dependencies
 
 * Uses the gem [timezone_finder](https://github.com/gunyarakun/timezone_finder) for time zone lookup.
-* Uses the gem [timezone](https://github.com/panthomakos/timezone).
 
 ## Installation
 

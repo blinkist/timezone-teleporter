@@ -11,8 +11,8 @@ Gem::Specification.new do |spec|
   spec.email       = ["ole@blinkist.com", "tomek@blinkist.com", "sj@blinkist.com"]
 
   spec.summary     = "Add some privacy to your users location data."
-  spec.description = "TimezoneTeleporter gives you some new coordinates in the same timezone."
-  spec.homepage    = "https://github.com/blinkist/timezone_teleporter"
+  spec.description = "TimezoneTeleporter anonymizes users' GPS coordinates by generating random coordinates in the same time zone. These new coordinates may be used then safely by 3rd party systems to process the users' location, without disclosing their actual physical position, providing more privacy, and anonymity to users."
+  spec.homepage    = "https://github.com/blinkist/timezone-teleporter"
   spec.license     = "MIT"
 
   spec.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.md"]
