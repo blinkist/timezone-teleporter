@@ -34,9 +34,9 @@ module TimezoneTeleporter
     end
 
     def teleport_timezone(input)
-        location = TIMEZONE_LOCATIONS[input]
+      location = TIMEZONE_LOCATIONS[input]
 
-        raise TimeZoneNotFoundError unless location
+      raise TimeZoneNotFoundError unless location
     end
 
     def timezone_at(lat, lng)
