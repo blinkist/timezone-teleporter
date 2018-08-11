@@ -25,18 +25,21 @@ module TimezoneTeleporter
       end
     end
 
-    def teleport_location(input)
-      TIMEZONE_LOCATIONS[timezone_at(*input)]
+    def teleport_location(location)
+      TIMEZONE_LOCATIONS[timezone_at(*location)]
     rescue StandardError => e
       raise e unless configuration.silent_mode
 
-      [*input]
+      [*location]
     end
 
-    def teleport_timezone(input)
-      location = TIMEZONE_LOCATIONS[input]
+    def teleport_timezone(timezone)
+      location = TIMEZONE_LOCATIONS[timezone]
 
       raise TimeZoneNotFoundError unless location
+    rescue TimeZoneNotFoundError => e
+      raise e unless configuration.silent_mode
+      timezone
     end
 
     def timezone_at(lat, lng)
