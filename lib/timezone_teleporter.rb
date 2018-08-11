@@ -34,12 +34,16 @@ module TimezoneTeleporter
     end
 
     def teleport_timezone(timezone)
-      location = TIMEZONE_LOCATIONS[timezone]
+      begin
+        location = TIMEZONE_LOCATIONS[timezone]
 
-      raise TimeZoneNotFoundError unless location
-    rescue TimeZoneNotFoundError => e
-      raise e unless configuration.silent_mode
-      timezone
+        raise TimeZoneNotFoundError unless location
+      rescue TimeZoneNotFoundError => e
+        raise e unless configuration.silent_mode
+
+        return timezone
+      end
+      location
     end
 
     def timezone_at(lat, lng)
