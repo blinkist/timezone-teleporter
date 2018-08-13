@@ -4,22 +4,22 @@ require "spec_helper"
 
 RSpec.describe TimezoneTeleporter do
   context ".configure" do
-    let(:silent_mode) { true }
+    let(:silent_exceptions) { true }
     let(:use_proximity_algorithm) { true }
     let(:delta_degree) { 3 }
 
     before do
       TimezoneTeleporter.configure do |c|
-        c.silent_mode = silent_mode
+        c.silent_exceptions = silent_exceptions
         c.use_proximity_algorithm = use_proximity_algorithm
         c.delta_degree = delta_degree
       end
     end
 
-    context "silent_mode" do
-      subject { TimezoneTeleporter.configuration.silent_mode }
+    context "silent_exceptions" do
+      subject { TimezoneTeleporter.configuration.silent_exceptions }
 
-      it { is_expected.to eq silent_mode }
+      it { is_expected.to eq silent_exceptions }
     end
 
     context "use_proximity_algorithm" do
