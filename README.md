@@ -42,17 +42,24 @@ Use following configuration flags to customise the library's behaviour:
 
 ### Usage
 
-Use `TimezoneTeleporter.teleport()` to generate randomized coordinates inside the same time zone by passing either coordinates or a time zone identifier:
+##### Teleport with coordinates
+Use `TimezoneTeleporter.teleport(lat, lng)` to generate randomized coordinates inside the same time zone by passing coordinates:
 
 ```ruby
 TimezoneTeleporter.teleport(52.520007, 13.404954)
 # => [51.165691, 10.451526]
+```
+*Note: If time zone is not found, `TimezoneTeleporter.teleport` will return the origin coordinates if silent_exceptions is set to true.*
 
+##### Teleport with time zone
+Use `TimezoneTeleporter.teleport(timezone)` to generate randomized coordinates inside the same time zone by passing a time zone:
+
+```ruby
 TimezoneTeleporter.teleport("Europe/Berlin")
 # => [51.165691, 10.451526]
 ```
+*Note: If time zone is not found, `TimezoneTeleporter.teleport` will return nil if silent_exceptions is set to true.*
 
-*Note: If time zone is not found, `TimezoneTeleporter.teleport` will return the origin coordinates unless silent_exceptions is set to false.*
 
 ## Development
 

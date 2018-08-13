@@ -29,7 +29,7 @@ RSpec.describe TimezoneTeleporter do
   end
 
   context ".teleport_location" do
-    subject { TimezoneTeleporter.teleport_location(coordinates) }
+    subject { TimezoneTeleporter.teleport_location(*coordinates) }
 
     context "called with proper coordinates" do
       it "returns correct coordinates in timezone" do
@@ -42,13 +42,13 @@ RSpec.describe TimezoneTeleporter do
 
       it "generated locations match timezone of locations" do
         test_locations.each do |timezone, coordinates|
-          expect(TimezoneTeleporter.teleport_location(coordinates)).to eq TimezoneTeleporter::TIMEZONE_LOCATIONS[timezone]
+          expect(TimezoneTeleporter.teleport_location(*coordinates)).to eq TimezoneTeleporter::TIMEZONE_LOCATIONS[timezone]
         end
       end
 
       it "new locations are different from input locations" do
         test_locations.each do |_timezone, coordinates|
-          expect(TimezoneTeleporter.teleport_location(coordinates)).not_to eq coordinates
+          expect(TimezoneTeleporter.teleport_location(*coordinates)).not_to eq coordinates
         end
       end
     end
@@ -64,7 +64,7 @@ RSpec.describe TimezoneTeleporter do
         let(:out_of_bound_coordinates) { [300, 300] }
 
         it "returns origin coordinates in timezone" do
-          expect(TimezoneTeleporter.teleport_location(out_of_bound_coordinates)).to eq out_of_bound_coordinates
+          expect(TimezoneTeleporter.teleport_location(*out_of_bound_coordinates)).to eq out_of_bound_coordinates
         end
       end
     end

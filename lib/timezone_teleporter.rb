@@ -17,20 +17,20 @@ module TimezoneTeleporter
       @configuration ||= Configuration.new
     end
 
-    def teleport(input)
-      if input.is_a? Array
-        teleport_location input
-      elsif input.is_a? String
-        teleport_timezone input
+    def teleport(lat_or_tz, lng=nil)
+      if lng.nil?
+        teleport_timezone(lat_or_tz)
+      else
+        teleport_location(lat_or_tz, lng)
       end
     end
 
-    def teleport_location(location)
-      TIMEZONE_LOCATIONS[timezone_at(*location)]
+    def teleport_location(lat, lng)
+      teleport_timezone(timezone_at(lat, lng))
     rescue StandardError => e
       raise e unless configuration.silent_exceptions
 
-      [*location]
+      [lat, lng]
     end
 
     def teleport_timezone(timezone)
