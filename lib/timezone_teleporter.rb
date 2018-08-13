@@ -34,15 +34,10 @@ module TimezoneTeleporter
     end
 
     def teleport_timezone(timezone)
-      begin
-        location = TIMEZONE_LOCATIONS[timezone]
+      location = TIMEZONE_LOCATIONS[timezone]
 
-        raise TimeZoneNotFoundError unless location
-      rescue TimeZoneNotFoundError => e
-        raise e unless configuration.silent_mode
+      raise TimeZoneNotFoundError unless location || configuration.silent_mode
 
-        return timezone
-      end
       location
     end
 
