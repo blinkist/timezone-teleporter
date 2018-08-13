@@ -56,7 +56,7 @@ RSpec.describe TimezoneTeleporter do
     context "when in silent mode" do
       before do
         TimezoneTeleporter.configure do |c|
-          c.silent_mode = true
+          c.silent_exceptions = true
         end
       end
 
@@ -72,7 +72,7 @@ RSpec.describe TimezoneTeleporter do
     context "when in non-silent mode" do
       before do
         TimezoneTeleporter.configure do |c|
-          c.silent_mode = false
+          c.silent_exceptions = false
         end
       end
 
@@ -119,7 +119,7 @@ RSpec.describe TimezoneTeleporter do
     context "when in silent mode" do
       before do
         TimezoneTeleporter.configure do |c|
-          c.silent_mode = true
+          c.silent_exceptions = true
         end
       end
 
@@ -135,7 +135,7 @@ RSpec.describe TimezoneTeleporter do
     context "when in non-silent mode" do
       before do
         TimezoneTeleporter.configure do |c|
-          c.silent_mode = false
+          c.silent_exceptions = false
         end
       end
 

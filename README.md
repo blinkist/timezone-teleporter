@@ -28,7 +28,7 @@ TimezoneTeleporter can be configured in an initializer:
 
 ```ruby
 TimezoneTeleporter.configure do |c|
-  c.silent_mode             = false
+  c.silent_exceptions       = false
   c.use_proximity_algorithm = true
   c.delta_degree            = 1
 end
@@ -36,20 +36,23 @@ end
 
 Use following configuration flags to customise the library's behaviour:
 
-* `silent_mode`: if set to true, no errors are raised (default is false),
+* `silent_exceptions`: if set to true, no errors are raised (default is false),
 * `use_proximity_algorithm`: if the timezone is not found, TimezoneTeleporter tries to find the closest timezone within +-1 delta_degree longitude and +-1 delta_degree latitude (default is true),
 * `delta_degree`: defines the radius for the proximity algorithm (default is 1).
 
 ### Usage
 
-Use `TimezoneTeleporter.teleport(latitude, longitude)` to generate randomized coordinates in the same time zone:
+Use `TimezoneTeleporter.teleport()` to generate randomized coordinates inside the same time zone by passing either coordinates or a time zone identifier:
 
 ```ruby
 TimezoneTeleporter.teleport(52.520007, 13.404954)
 # => [51.165691, 10.451526]
+
+TimezoneTeleporter.teleport("Europe/Berlin")
+# => [51.165691, 10.451526]
 ```
 
-*Note: If time zone is not found, `TimezoneTeleporter.teleport` will return the origin coordinates unless silent_mode is set to false.*
+*Note: If time zone is not found, `TimezoneTeleporter.teleport` will return the origin coordinates unless silent_exceptions is set to false.*
 
 ## Development
 

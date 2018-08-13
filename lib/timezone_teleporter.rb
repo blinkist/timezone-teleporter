@@ -28,7 +28,7 @@ module TimezoneTeleporter
     def teleport_location(location)
       TIMEZONE_LOCATIONS[timezone_at(*location)]
     rescue StandardError => e
-      raise e unless configuration.silent_mode
+      raise e unless configuration.silent_exceptions
 
       [*location]
     end
@@ -36,7 +36,7 @@ module TimezoneTeleporter
     def teleport_timezone(timezone)
       location = TIMEZONE_LOCATIONS[timezone]
 
-      raise TimeZoneNotFoundError unless location || configuration.silent_mode
+      raise TimeZoneNotFoundError unless location || configuration.silent_exceptions
 
       location
     end
