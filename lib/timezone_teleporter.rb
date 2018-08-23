@@ -29,8 +29,6 @@ module TimezoneTeleporter
       teleport_timezone(timezone_at(lat, lng))
     rescue StandardError => e
       raise e unless configuration.silent_exceptions
-
-      [lat, lng]
     end
 
     def teleport_timezone(timezone)
