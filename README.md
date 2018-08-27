@@ -36,7 +36,7 @@ end
 
 Use following configuration flags to customise the library's behaviour:
 
-* `silent_exceptions`: if set to true, no errors are raised (default is false),
+* `silent_exceptions`: if set to true, no errors are raised and `teleport` returns nil in case no location could be found (default is true),
 * `use_proximity_algorithm`: if the timezone is not found, TimezoneTeleporter tries to find the closest timezone within +-1 delta_degree longitude and +-1 delta_degree latitude (default is true),
 * `delta_degree`: defines the radius for the proximity algorithm (default is 1).
 

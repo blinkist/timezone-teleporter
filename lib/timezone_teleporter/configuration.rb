@@ -7,7 +7,7 @@ module TimezoneTeleporter
     attr_accessor :delta_degree
 
     def initialize
-      @silent_exceptions = false
+      @silent_exceptions = true
       @use_proximity_algorithm = true
       @delta_degree = 1
     end
