@@ -63,8 +63,8 @@ RSpec.describe TimezoneTeleporter do
       context "when timezone is not found" do
         let(:out_of_bound_coordinates) { [300, 300] }
 
-        it "returns origin coordinates in timezone" do
-          expect(TimezoneTeleporter.teleport_location(*out_of_bound_coordinates)).to eq out_of_bound_coordinates
+        it "returns nil" do
+          expect(TimezoneTeleporter.teleport_location(*out_of_bound_coordinates)).to eq nil
         end
       end
     end

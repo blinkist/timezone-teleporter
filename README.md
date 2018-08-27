@@ -28,7 +28,7 @@ TimezoneTeleporter can be configured in an initializer:
 
 ```ruby
 TimezoneTeleporter.configure do |c|
-  c.silent_exceptions       = false
+  c.silent_exceptions       = true
   c.use_proximity_algorithm = true
   c.delta_degree            = 1
 end
@@ -36,30 +36,35 @@ end
 
 Use following configuration flags to customise the library's behaviour:
 
-* `silent_exceptions`: if set to true, no errors are raised (default is false),
+* `silent_exceptions`: if set to true, no errors are raised and `teleport` returns nil in case no location could be found (default is true),
 * `use_proximity_algorithm`: if the timezone is not found, TimezoneTeleporter tries to find the closest timezone within +-1 delta_degree longitude and +-1 delta_degree latitude (default is true),
 * `delta_degree`: defines the radius for the proximity algorithm (default is 1).
 
 ### Usage
 
-##### Teleport with coordinates
-Use `TimezoneTeleporter.teleport(lat, lng)` to generate randomized coordinates inside the same time zone by passing coordinates:
+##### Teleport with coordinates or timezone
+Use `TimezoneTeleporter.teleport(lat, lng)` or `TimezoneTeleporter.teleport(timezone)` to generate randomized coordinates inside the same time zone by passing coordinates:
 
 ```ruby
 TimezoneTeleporter.teleport(52.520007, 13.404954)
 # => [51.165691, 10.451526]
 ```
-*Note: If time zone is not found, `TimezoneTeleporter.teleport` will return the origin coordinates if silent_exceptions is set to true.*
-
-##### Teleport with time zone
-Use `TimezoneTeleporter.teleport(timezone)` to generate randomized coordinates inside the same time zone by passing a time zone:
 
 ```ruby
 TimezoneTeleporter.teleport("Europe/Berlin")
 # => [51.165691, 10.451526]
 ```
-*Note: If time zone is not found, `TimezoneTeleporter.teleport` will return nil if silent_exceptions is set to true.*
 
+**Note: If time zone is not found, `TimezoneTeleporter.teleport` will return nil if silent_exceptions is set to true.**
+
+To get the best result, use both versions together with silent exceptions:
+
+```ruby
+TimezoneTeleporter.configure { |c| c.silent_exceptions = true }
+
+TimezoneTeleporter.teleport("Europe/Berlin") || TimezoneTeleporter.teleport(52.520007, 13.404954)
+# => [51.165691, 10.451526]
+```
 
 ## Development
 

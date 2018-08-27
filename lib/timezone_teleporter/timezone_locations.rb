@@ -2,6 +2,14 @@
 
 module TimezoneTeleporter
   TIMEZONE_LOCATIONS = {
+    "Asia/Yangon" => [
+      "16.7833",
+      "96.1667"
+    ],
+    "Asia/Famagusta" => [
+      "35.0375",
+      "33.9833"
+    ],
     "Indian/Mauritius" => [
       -20.348404,
       57.55215200000001
