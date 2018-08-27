@@ -28,7 +28,7 @@ TimezoneTeleporter can be configured in an initializer:
 
 ```ruby
 TimezoneTeleporter.configure do |c|
-  c.silent_exceptions       = false
+  c.silent_exceptions       = true
   c.use_proximity_algorithm = true
   c.delta_degree            = 1
 end
