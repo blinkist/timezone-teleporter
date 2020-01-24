@@ -850,6 +850,10 @@ module TimezoneTeleporter
       79.059994,
       -19.77234
     ],
+    "Antarctica/Troll" => [
+      -72.0166666,
+      2.5333312
+    ],
     "Australia/Melbourne" => [
       -37.8136276,
       144.9630576
