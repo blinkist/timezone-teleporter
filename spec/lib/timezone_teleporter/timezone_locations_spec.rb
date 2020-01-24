@@ -4,7 +4,7 @@ require "spec_helper"
 
 RSpec.describe TimezoneTeleporter do
   context "::TIMEZONE_LOCATIONS" do
-    let(:excluded_locations) { ["Asia/Yangon", "Asia/Famagusta"] }
+    let(:excluded_locations) { ["Asia/Yangon", "Asia/Famagusta", "Antarctica/Troll"] }
 
     let(:locations) {
       TimezoneTeleporter::TIMEZONE_LOCATIONS.reject { |t, _c| excluded_locations.include? t }
