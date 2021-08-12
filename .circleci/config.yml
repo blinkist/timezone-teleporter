@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.5.1-node-browsers
+      - image: cimg/ruby:2.7.4-browsers
 
     steps:
       - checkout
@@ -18,7 +18,7 @@ jobs:
 
   deploy:
     docker:
-      - image: circleci/ruby:2.5.1-node-browsers
+      - image: cimg/ruby:2.7.4-browsers
     steps:
       - checkout
 

@@ -42,9 +42,7 @@ module TimezoneTeleporter
     def timezone_at(lat, lng)
       timezone_name = timezone_finder.timezone_at(lat: lat, lng: lng)
 
-      if configuration.use_proximity_algorithm
-        timezone_name ||= timezone_finder.closest_timezone_at(lat: lat, lng: lng, delta_degree: configuration.delta_degree)
-      end
+      timezone_name ||= timezone_finder.closest_timezone_at(lat: lat, lng: lng, delta_degree: configuration.delta_degree) if configuration.use_proximity_algorithm
 
       raise TimeZoneNotFoundError unless timezone_name
 
