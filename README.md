@@ -1,3 +1,6 @@
+> [!CAUTION]
+> This gem is no longer maintained
+
 ![TimezoneTeleporter](./timezone_teleporter.png)
 
 # TimezoneTeleporter
